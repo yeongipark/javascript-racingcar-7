@@ -21,7 +21,7 @@ export default class RacingCarController {
     Validator.validateTryNumber(tryNumber);
 
     this.#ouputView.printString(OUTPUT.EXCUTION_RESULT);
-    Array(tryNumber)
+    Array(Number(tryNumber))
       .fill(0)
       .forEach(() => {
         const advancedResult = this.#racingCarService.processCarMovement();
