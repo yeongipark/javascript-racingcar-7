@@ -40,4 +40,15 @@ describe('Validator 클래스 테스트', () => {
       ERROR.MAX_TRY_NUMBER,
     );
   });
+
+  test('자동차 이름 길이 검증', () => {
+    const failCars = ['pobipobi', 'yeongi'];
+    const trueCars = ['pobi', 'woni'];
+
+    expect(() => Validator.validateCarNameLength(failCars)).toThrow(
+      ERROR.CAR_NAME_LENGTH,
+    );
+
+    expect(() => Validator.validateCarNameLength(trueCars)).not.toThrow();
+  });
 });

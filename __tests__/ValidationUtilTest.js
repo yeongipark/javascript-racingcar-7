@@ -5,6 +5,7 @@ import {
   checkMaxCarNumber,
   checkMinTryNumber,
   checkMaxTryNumber,
+  checkCarNameLength,
 } from '../src/util/validationUtil';
 
 describe('validateUtil 함수 테스트', () => {
@@ -43,5 +44,11 @@ describe('validateUtil 함수 테스트', () => {
 
     expect(() => checkMaxTryNumber(trueInput)).not.toThrow();
     expect(() => checkMaxTryNumber(failInput)).toThrow(ERROR.MAX_TRY_NUMBER);
+  });
+
+  test('지동차 이름이 6글자 이상인 경우 예외 처리', () => {
+    const cars = ['pobipobi', 'yeongi'];
+
+    expect(() => checkCarNameLength(cars)).toThrow(ERROR.CAR_NAME_LENGTH);
   });
 });

@@ -1,4 +1,5 @@
 import {
+  checkCarNameLength,
   checkEmptyString,
   checkMaxCarNumber,
   checkMaxTryNumber,
@@ -9,6 +10,10 @@ import {
 export default class Validator {
   static validateUserInput(input) {
     checkEmptyString(input);
+  }
+
+  static validateCarNameLength(cars) {
+    checkCarNameLength(cars);
   }
 
   static validateCarNumber(cars) {

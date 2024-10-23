@@ -29,3 +29,11 @@ export function checkMaxTryNumber(tryNumber) {
     throw new Error(ERROR.MAX_TRY_NUMBER);
   }
 }
+
+export function checkCarNameLength(cars) {
+  cars.forEach((car) => {
+    if (car.length > 5) {
+      throw new Error(ERROR.CAR_NAME_LENGTH);
+    }
+  });
+}

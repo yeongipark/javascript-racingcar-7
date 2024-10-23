@@ -29,16 +29,16 @@ const getLogSpy = () => {
 
 describe('RacingCarController 클래스 테스트', () => {
   test('실제 어플리케이션 동작 테스트', async () => {
-    const inputs = ['pobi,woni,yeongi', 2];
+    const inputs = ['pobi,woni,yeon', 2];
     const randomValue = [5, 1, 7, 4, 4, 6];
     const logs = [
       'pobi : -',
       'woni : ',
-      'yeongi : -',
+      'yeon : -',
       'pobi : --',
       'woni : -',
-      'yeongi : --',
-      '최종 우승자 : pobi, yeongi',
+      'yeon : --',
+      '최종 우승자 : pobi, yeon',
     ];
     const logSpy = getLogSpy();
 
