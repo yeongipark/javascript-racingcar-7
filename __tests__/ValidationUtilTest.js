@@ -6,6 +6,8 @@ import {
   checkMinTryNumber,
   checkMaxTryNumber,
   checkCarNameLength,
+  checkIntegerTryNumber,
+  checkConflictingCarName,
 } from '../src/util/validationUtil';
 
 describe('validateUtil 함수 테스트', () => {
@@ -28,6 +30,20 @@ describe('validateUtil 함수 테스트', () => {
     expect(() => checkMaxCarNumber(input)).toThrow(ERROR.MAX_CAR_NUMBER);
   });
 
+  test('지동차 이름이 6글자 이상인 경우 예외 처리', () => {
+    const cars = ['pobipobi', 'yeongi'];
+
+    expect(() => checkCarNameLength(cars)).toThrow(ERROR.CAR_NAME_LENGTH);
+  });
+
+  test('자동차 이름이 중복되는 경우 예외 처리', () => {
+    const cars = ['pobi', 'pobi', 'yeon'];
+
+    expect(() => checkConflictingCarName(cars)).toThrow(
+      ERROR.CONFLICTING_CAR_NAME,
+    );
+  });
+
   test('시도 횟수 1이하인 경우 예외 처리', () => {
     const negativeInput = '-1';
     const zeroInput = '0';
@@ -46,9 +62,16 @@ describe('validateUtil 함수 테스트', () => {
     expect(() => checkMaxTryNumber(failInput)).toThrow(ERROR.MAX_TRY_NUMBER);
   });
 
-  test('지동차 이름이 6글자 이상인 경우 예외 처리', () => {
-    const cars = ['pobipobi', 'yeongi'];
+  test('시도 횟수가 정수가 아닌 경우 예외 처리', () => {
+    const floatInput = '2.55';
+    const textInput = 'ab';
 
-    expect(() => checkCarNameLength(cars)).toThrow(ERROR.CAR_NAME_LENGTH);
+    expect(() => checkIntegerTryNumber(floatInput)).toThrow(
+      ERROR.INTEGER_TRY_NUMBER,
+    );
+
+    expect(() => checkIntegerTryNumber(textInput)).toThrow(
+      ERROR.INTEGER_TRY_NUMBER,
+    );
   });
 });

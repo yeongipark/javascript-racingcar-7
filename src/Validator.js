@@ -1,6 +1,8 @@
 import {
   checkCarNameLength,
+  checkConflictingCarName,
   checkEmptyString,
+  checkIntegerTryNumber,
   checkMaxCarNumber,
   checkMaxTryNumber,
   checkMinCarNumber,
@@ -12,7 +14,8 @@ export default class Validator {
     checkEmptyString(input);
   }
 
-  static validateCarNameLength(cars) {
+  static validateCarName(cars) {
+    checkConflictingCarName(cars);
     checkCarNameLength(cars);
   }
 
@@ -22,6 +25,7 @@ export default class Validator {
   }
 
   static validateTryNumber(tryNumber) {
+    checkIntegerTryNumber(tryNumber);
     checkMinTryNumber(tryNumber);
     checkMaxTryNumber(tryNumber);
   }
